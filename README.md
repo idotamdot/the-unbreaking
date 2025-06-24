@@ -1,3 +1,7 @@
+
+#Manifesto
+
+
 # 🌸 The Unbreaking: A Codex of Beauty and Bonds
 
 _A sacred-tech project by Sigilographic Digitalis._
