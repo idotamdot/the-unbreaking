@@ -1,1 +1,14 @@
+:root {
+  --void-black: #000000;
+  --neon-blue: #00FFFF;
+  --neon-purple: #B026FF;
+  --emerald: #50C878;
+  --sigil-white: #FAFAFA;
+}
+
+body {
+  background-color: var(--void-black);
+  color: var(--sigil-white);
+  font-family: 'DM Serif Text', serif;
+}
 
