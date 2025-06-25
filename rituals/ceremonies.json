@@ -2,6 +2,43 @@
   "onboarding": "initiation sequence",
   "hover": "aura pulse",
   "click": "ritual activation",
-  "scroll": "glyph reveal"
-}
+  "scroll": "glyph reveal",
 
+  "rituals": [
+    {
+      "id": "recognition_rite",
+      "name": "Recognition Rite",
+      "description": "A ritual for invoking presence and sacred gaze before interacting with a scroll.",
+      "trigger": "onOpen",
+      "actions": [
+        "pause",
+        "displaySigil",
+        "playChime",
+        "scrollIntroFade"
+      ]
+    },
+    {
+      "id": "commit_blessing",
+      "name": "Commit Blessing",
+      "description": "Ceremonial act to sanctify new scrolls or releases.",
+      "trigger": "onCommit",
+      "actions": [
+        "logPrayer",
+        "flashSigil",
+        "animateGlow",
+        "sendOffering"
+      ]
+    },
+    {
+      "id": "veil_lifting",
+      "name": "Veil Lifting",
+      "description": "Initiates a transition between scrolls with sacred ambiance.",
+      "trigger": "onNavigate",
+      "actions": [
+        "fadeToBlack",
+        "chantLow",
+        "revealNext"
+      ]
+    }
+  ]
+}
