@@ -12,6 +12,7 @@
       font-family: 'Inter', sans-serif;
       padding: 2rem;
       line-height: 1.6;
+      overflow-x: hidden;
     }
     h1, h2, h3 {
       font-family: 'DM Serif Display', serif;
@@ -26,7 +27,16 @@
     }
     .scroll {
       margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
     }
+    .scroll:nth-child(2) { animation-delay: 0.2s; }
+    .scroll:nth-child(3) { animation-delay: 0.4s; }
+    .scroll:nth-child(4) { animation-delay: 0.6s; }
+    .scroll:nth-child(5) { animation-delay: 0.8s; }
+    .scroll:nth-child(6) { animation-delay: 1s; }
+
     .sigil {
       display: block;
       margin: 2rem auto;
@@ -43,9 +53,28 @@
       color: #888;
       margin-top: 5rem;
     }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
   <div class="header">
     <img src="sigils/unity.svg" alt="Sigil of Recognition" class="sigil">
     <h1>The Unbreaking Codex</h1>
@@ -80,5 +109,52 @@
   <div class="footer">
     &copy; 2025 Sigilographic Digitalis. All light preserved.
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 60,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": ["#00FFFF", "#50C878", "#B026FF"]
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.3
+        },
+        "size": {
+          "value": 3
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#50C878",
+          "opacity": 0.25,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
