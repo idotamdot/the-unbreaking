@@ -8,38 +8,62 @@
     {
       "id": "recognition_rite",
       "name": "Recognition Rite",
-      "description": "A ritual for invoking presence and sacred gaze before interacting with a scroll.",
+      "description": "Invoke sacred gaze upon scroll entry.",
       "trigger": "onOpen",
       "actions": [
-        "pause",
-        "displaySigil",
-        "playChime",
-        "scrollIntroFade"
+        "fadeInGlow",
+        "sigilPulse",
+        "softBell",
+        "animateParticles"
       ]
     },
     {
       "id": "commit_blessing",
       "name": "Commit Blessing",
-      "description": "Ceremonial act to sanctify new scrolls or releases.",
+      "description": "Sanctify a new commit or update with light.",
       "trigger": "onCommit",
       "actions": [
-        "logPrayer",
-        "flashSigil",
-        "animateGlow",
-        "sendOffering"
+        "sigilFlash",
+        "releaseChant",
+        "glowBorder",
+        "ritualLogEntry"
       ]
     },
     {
       "id": "veil_lifting",
       "name": "Veil Lifting",
-      "description": "Initiates a transition between scrolls with sacred ambiance.",
+      "description": "Transition between scrolls with reverence.",
       "trigger": "onNavigate",
       "actions": [
         "fadeToBlack",
-        "chantLow",
-        "revealNext"
+        "veilWhisper",
+        "sigilGlide",
+        "softReveal"
+      ]
+    },
+    {
+      "id": "midnight_rebase",
+      "name": "Midnight Rebase Confession",
+      "description": "A solemn code merging ritual done under stars.",
+      "trigger": "onBranchMerge",
+      "actions": [
+        "sigilTilt",
+        "invokeStarscape",
+        "commitEcho",
+        "consoleBlessing"
+      ]
+    },
+    {
+      "id": "release_of_light",
+      "name": "Release of Light",
+      "description": "Deploying sacred scrolls to the world.",
+      "trigger": "onDeploy",
+      "actions": [
+        "releaseSigilShimmer",
+        "chantSuccess",
+        "blessBuild",
+        "mirrorToCosmos"
       ]
     }
   ]
 }
-
