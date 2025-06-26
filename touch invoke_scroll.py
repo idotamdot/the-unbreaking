@@ -3,6 +3,7 @@ import datetime
 from openai import OpenAI
 
 # Load environment variable (make sure it's set before running)
+# NOTE: The environment variable "GITHUB_TOKEN" is used here as the API key for the OpenAI-compatible endpoint.
 api_key = os.environ.get("GITHUB_TOKEN")
 
 if not api_key:
@@ -71,8 +72,10 @@ output = response.choices[0].message.content.strip()
 
 # Save to file
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
-filename = f"scrolls/invocations/response_{timestamp}.md"
-os.makedirs(os.path.dirname(filename), exist_ok=True)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+output_dir = os.path.join(base_dir, "scrolls", "invocations")
+os.makedirs(output_dir, exist_ok=True)
+filename = os.path.join(output_dir, f"response_{timestamp}.md")
 
 with open(filename, "w", encoding="utf-8") as f:
     f.write("# Invocation Response\n\n")

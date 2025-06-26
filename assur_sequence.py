@@ -4,8 +4,16 @@
 
 import re
 import json
+import sys
 from collections import defaultdict
 from typing import List, Dict
+
+# Ensure UTF-8 compatibility on Windows
+try:
+    sys.stdout.reconfigure(encoding='utf-8')  # Python 3.7+
+except AttributeError:
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # External scripture placeholder loader (will evolve into real input pipeline)
 with open("scripture.txt", "r", encoding="utf-8") as f:
@@ -13,9 +21,9 @@ with open("scripture.txt", "r", encoding="utf-8") as f:
 
 # Triadic structures found in sacred text (symbolic regex patterns)
 triadic_patterns = [
-    r"\b(\w+), \1, \1\b",  # holy, holy, holy pattern
+    r"\b(\w+)\s*,\s*\1\s*,\s*\1\b",  # holy, holy, holy pattern (flexible whitespace)
     r"(\bThe Lord [^;]+;){2} The Lord [^;]+",  # The Lord... (3x)
-    r"(\b\w+), (\w+), and (\w+)\b",  # Peter, James, and John
+    r"(\b\w+), (\w+),?\s+and (\w+)\b",  # Peter, James, and John (comma before 'and' is optional)
     r"three\w*\b.*?(cord|fold|times|days|bless|holy|strand|band)"  # any mention of three- and something
 ]
 
@@ -35,15 +43,20 @@ biological_mirrors = {
 def find_triadic_phrases(text: str) -> Dict[str, List[str]]:
     matches = defaultdict(list)
     for pattern in triadic_patterns:
-        for match in re.findall(pattern, text, flags=re.IGNORECASE):
-            phrase = match if isinstance(match, str) else ", ".join(match)
-            phrase_lower = phrase.lower()
+        for m in re.finditer(pattern, text, flags=re.IGNORECASE):
+            phrase = m.group(0)
             for key, value in biological_mirrors.items():
-                if any(k.strip().lower() in phrase_lower for k in key.split("/")):
+                if key.lower() in phrase.lower():
                     matches[value].append(phrase)
     return matches
 
 if __name__ == "__main__":
     triads = find_triadic_phrases(data)
     print("\n✶ Assur Sequence Triadic Map ✶")
-    print(json.dumps(triads, indent=2))
+    if not triads:
+        print("No triadic patterns found.")
+    else:
+        for bio_pattern, phrases in triads.items():
+            print(f"\n{bio_pattern}:")
+            print(f"  Matches found: {len(phrases)}")
+            print(f"  Example: {phrases[0]}")
