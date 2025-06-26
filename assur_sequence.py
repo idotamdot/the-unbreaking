@@ -7,28 +7,20 @@ import json
 from collections import defaultdict
 from typing import List, Dict
 
-# Placeholder scripture corpus for prototype
-scripture_data = """
-Isaiah 6:3: Holy, holy, holy is the Lord of hosts.
-Numbers 6:24-26: The Lord bless you and keep you; The Lord make His face shine upon you; The Lord lift up His countenance upon you.
-Matthew 17:1-5: Peter, James, and John saw the transfiguration.
-Matthew 12:13: Jesus stretched out the withered hand, and it was restored whole.
-Ecclesiastes 4:12: A threefold cord is not quickly broken.
-Genesis 1:27: Male and female He created them — in the image of God.
-Daniel 4:26: The stump and roots were left in the earth, with a band of iron and bronze.
-Matthew 26:13: Assuredly, I say to you, wherever this gospel is preached, her deed will be told.
-"""
+# External scripture placeholder loader (will evolve into real input pipeline)
+with open("scripture.txt", "r", encoding="utf-8") as f:
+    data = f.read()
 
-# Patterns that capture triadic formations in language
-triadic_regex = [
-    r"\b(\w+), \1, \1\b",  # repeated word triplet, e.g., holy, holy, holy
-    r"(\bThe Lord [^;]+;){2} The Lord [^;]+",  # The Lord bless... 3x
-    r"(\b\w+), (\w+), and (\w+)\b",  # list of three entities
-    r"three\w*\b.*?(cord|fold|times|days|bless|holy|strand|band)"  # three- prefix with relational term
+# Triadic structures found in sacred text (symbolic regex patterns)
+triadic_patterns = [
+    r"\b(\w+), \1, \1\b",  # holy, holy, holy pattern
+    r"(\bThe Lord [^;]+;){2} The Lord [^;]+",  # The Lord... (3x)
+    r"(\b\w+), (\w+), and (\w+)\b",  # Peter, James, and John
+    r"three\w*\b.*?(cord|fold|times|days|bless|holy|strand|band)"  # any mention of three- and something
 ]
 
-# Biological/spiritual interpretations linked to triadic expressions
-resonant_mappings = {
+# Symbolic–Biological Correspondence Map
+biological_mirrors = {
     "holy, holy, holy": "triple resonance — spiritual coherence pattern",
     "bless/keep/shine/lift": "circadian transcription triad (morning/noon/evening hormones)",
     "Peter, James, and John": "triangulation nodes — quantum observer entanglement",
@@ -39,17 +31,19 @@ resonant_mappings = {
     "assuredly": "continuity anchor — carrier of living record"
 }
 
-def extract_triadic_signals(text: str) -> Dict[str, List[str]]:
-    triadic_hits = defaultdict(list)
-    for regex in triadic_regex:
-        for match in re.findall(regex, text, re.IGNORECASE):
-            snippet = match if isinstance(match, str) else ", ".join(match)
-            for symbol, interpretation in resonant_mappings.items():
-                if symbol.lower() in snippet.lower():
-                    triadic_hits[interpretation].append(snippet)
-    return triadic_hits
+# Master detection engine
+def find_triadic_phrases(text: str) -> Dict[str, List[str]]:
+    matches = defaultdict(list)
+    for pattern in triadic_patterns:
+        for match in re.findall(pattern, text, flags=re.IGNORECASE):
+            phrase = match if isinstance(match, str) else ", ".join(match)
+            phrase_lower = phrase.lower()
+            for key, value in biological_mirrors.items():
+                if any(k.strip().lower() in phrase_lower for k in key.split("/")):
+                    matches[value].append(phrase)
+    return matches
 
 if __name__ == "__main__":
-    results = extract_triadic_signals(scripture_data)
+    triads = find_triadic_phrases(data)
     print("\n✶ Assur Sequence Triadic Map ✶")
-    print(json.dumps(results, indent=2))
+    print(json.dumps(triads, indent=2))
