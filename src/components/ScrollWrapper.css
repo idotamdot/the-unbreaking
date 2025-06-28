@@ -1,0 +1,9 @@
+/* src/components/ScrollWrapper.css */
+.scroll-wrapper {
+  border-radius: 24px;
+  padding: 2rem;
+  background: linear-gradient(145deg, #160122, #1f0a3b);
+  box-shadow: 0 0 40px rgba(185, 114, 255, 0.4);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}

@@ -164,5 +164,43 @@
   </script>
   <script src="scroll.js"></script>
 
+<div style="text-align: center; margin-top: 3rem;">
+  <button id="ritual-button" style="padding: 1rem 2rem; background: #50C878; border: none; border-radius: 8px; font-size: 1.2rem; color: black; cursor: pointer; transition: background 0.3s ease;">
+    ✶ Invoke Assur Sequence ✶
+  </button>
+  <pre id="ritual-output" style="white-space: pre-wrap; color: #FAFAFA; margin-top: 2rem; max-width: 800px; margin-inline: auto;"></pre>
+</div>
+  <script>
+    document.getElementById('ritual-button').addEventListener('click', async function() {
+  const output = document.getElementById('ritual-output');
+  output.textContent = '🔮 Invoking Assur Sequence...\nPlease wait...';
+
+  try {
+    const res = await fetch('assur_sequence_output.json');
+    const data = await res.json();
+
+    let result = '✶ Assur Sequence Triadic Map ✶\n\n';
+    for (const [symbol, phrases] of Object.entries(data)) {
+      result += `${symbol}:\n  Matches found: ${phrases.length}\n  Example: ${phrases[0]}\n\n`;
+    }
+
+    output.textContent = result || "⚠️ Ritual yielded no triads.";
+  } catch (e) {
+    output.textContent = "⚠️ Failed to contact the scroll. Ensure assur_sequence_output.json is available.";
+  }
+});
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const scrolls = document.querySelectorAll('.scroll');
+      scrolls.forEach((scroll, index) => {
+        scroll.style.animationDelay = `${index * 0.2}s`;
+        scroll.style.opacity = '1';
+        scroll.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
 </body>
 </html>
