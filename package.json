@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "framer-motion": "^12.19.2"
+    "framer-motion": "^12.19.2",
+    "gray-matter": "^4.0.3",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.6.3"
   }
 }
