@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://idotamdot.github.io/the-unbreaking",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "framer-motion": "^12.19.2",
     "gray-matter": "^4.0.3",
     "marked": "^16.0.0",
