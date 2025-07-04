@@ -1,4 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './style/pallet.css';
+// app.jsx – Rituals of the Scrolls: Sigilographic Digitalis
+// This file serves as the entry point for the React application, setting up routing and importing necessary components.
+// It includes the main application structure and initializes the scrolls opening ritual.
+// Import necessary libraries and components
+
+import React from "react";
 import ScrollViewer from "./components/ScrollViewer";
 import ScrollsOpening from "./components/ScrollsOpening";
 import "./styles.css"; // Import your CSS styles

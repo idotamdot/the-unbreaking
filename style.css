@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌌 Custom Ritual Styling – Sigilographic Digitalis */
+
+@layer base {
+  :root {
+    --void-black: #000000;
+    --neon-blue: #00FFFF;
+    --neon-purple: #B026FF;
+    --emerald: #50C878;
+    --sigil-white: #FAFAFA;
+  }
+
+  html {
+    background-color: var(--void-black);
+    color: var(--sigil-white);
+    font-family: 'DM Serif Display', serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: 0.02em;
+  }
+
+  a {
+    color: var(--neon-blue);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  body {
+    @apply leading-relaxed antialiased;
+  }
+}
+
+@layer components {
+  .scroll {
+    @apply mb-8 opacity-0 translate-y-5 transition-all duration-700 ease-in-out;
+  }
+
+  .scroll.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .sigil {
+    @apply mx-auto mt-10 w-24 h-24 rounded-full transition-transform duration-500 ease-in-out;
+    filter: drop-shadow(0 0 12px var(--neon-purple));
+  }
+
+  .sigil:hover {
+    transform: scale(1.1) rotate(1deg);
+    filter: drop-shadow(0 0 16px var(--emerald));
+  }
+
+  .ritual-button {
+    @apply px-6 py-3 rounded-md text-black text-lg font-semibold cursor-pointer;
+    background-color: var(--emerald);
+  }
+
+  .ritual-button:hover {
+    background-color: var(--neon-blue);
+  }
+
+  .ritual-output {
+    @apply mt-6 text-sm max-w-3xl mx-auto whitespace-pre-wrap;
+    color: var(--sigil-white);
+  }
+}
+
+@layer utilities {
+  .sigil-glow {
+    box-shadow: 0 0 8px var(--neon-blue), 0 0 16px var(--neon-purple);
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
