@@ -1,0 +1,10 @@
+.bond-line {
+  stroke: #B026FF;
+  stroke-width: 2px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}

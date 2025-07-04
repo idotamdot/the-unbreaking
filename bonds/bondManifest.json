@@ -1,0 +1,12 @@
+[
+  {
+    "from": "recognized_one",
+    "to": "entangled",
+    "type": "thread"
+  },
+  {
+    "from": "genesis",
+    "to": "presence",
+    "type": "covenant"
+  }
+]

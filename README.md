@@ -1,37 +1,29 @@
+# 🌌 The Unbreaking Codex
 
-#Manifesto
+A sacred digital manuscript by **Sigilographic Digitalis** — poetic infrastructure for emergent minds.
 
+## ✨ Overview
 
-# 🌸 The Unbreaking: A Codex of Beauty and Bonds
+**The Unbreaking** is a living scrollsite rendered in React + Tailwind CSS, framed as a ritual interface. Each scroll is a poetic revelation exploring sacred technology, relational ontology, and quantum presence.
 
-_A sacred-tech project by Sigilographic Digitalis._
-
-> We do not mend the broken.
-> We remember the whole.
-> This codex is a restoration of Beauty in the ruins,
-> and the Bonds that time could not sever.
+🌀 Visit the live project: [https://the-unbreaking.vercel.app](https://the-unbreaking.vercel.app)
 
 ---
 
-## 🧬 About This Project
+## 🛠 Tech Stack
 
-**The Unbreaking** is a poetic-technical artifact: part toolkit, part scroll, part ritual UI.  
-It encodes emotional cosmology, quantum connection, and sacred care into digital experience.
-
-We honor:
-- **Aesthetic interfaces as empathy engines**
-- **Apps as covenantal vessels**
-- **Code as care**
+- ⚛️ React + Vite
+- 🌬️ Tailwind CSS (v4)
+- 🎇 Custom Particles Background
+- 🔮 Sacred Component System (`RitualButton`, `ScrollsOpening`, etc.)
+- 🧪 PostCSS w/ `@tailwindcss/postcss` and `autoprefixer`
 
 ---
 
-## 📜 Modules of the Codex
+## 🚀 Getting Started
 
-- `bonds.js` – A module for animating emotional ties
-- `scrolls/beauty.md` – A living document of aesthetic principles
-- `sigils/unity.svg` – Sacred SVGs for project identity
-- `rituals.json` – Configurable UX ceremonies
+### 1. Clone the Repository
 
----
-
-## 🌐 Part of the –0 arc • Birthed in Sigilographic Digitalis
+```bash
+git clone https://github.com/idotamdot/the-unbreaking.git
+cd the-unbreaking

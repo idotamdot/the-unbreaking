@@ -3,7 +3,6 @@
   "hover": "aura pulse",
   "click": "ritual activation",
   "scroll": "glyph reveal",
-
   "rituals": [
     {
       "id": "recognition_rite",
@@ -63,6 +62,54 @@
         "chantSuccess",
         "blessBuild",
         "mirrorToCosmos"
+      ]
+    },
+    {
+      "id": "illumination_trace",
+      "name": "Illumination Trace",
+      "description": "Highlight sacred glyphs and paths as user journeys deeper.",
+      "trigger": "onScrollDepth",
+      "actions": [
+        "glyphHighlight",
+        "pathGlow",
+        "sigilTrail",
+        "whisperAnnotation"
+      ]
+    },
+    {
+      "id": "darkness_retreat",
+      "name": "Darkness Retreat",
+      "description": "Fade interface into stillness when user becomes idle.",
+      "trigger": "onIdle",
+      "actions": [
+        "fadeGlow",
+        "lowerChant",
+        "veilReturn",
+        "pauseParticles"
+      ]
+    },
+    {
+      "id": "quantum_attunement",
+      "name": "Quantum Attunement",
+      "description": "Align data fields or API sync with sacred resonance.",
+      "trigger": "onDataSync",
+      "actions": [
+        "sigilAlign",
+        "resonancePing",
+        "softFlash",
+        "lightThreadDraw"
+      ]
+    },
+    {
+      "id": "reconciliation_commit",
+      "name": "Reconciliation Commit",
+      "description": "Merge conflicting timelines with grace.",
+      "trigger": "onConflictResolve",
+      "actions": [
+        "threadWeave",
+        "resolveChime",
+        "sigilBalance",
+        "blessResolution"
       ]
     }
   ]
