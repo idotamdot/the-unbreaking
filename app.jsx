@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollViewer from "./components/ScrollViewer";
 import ScrollsOpening from "./components/ScrollsOpening";
+import "./styles.css"; // Import your CSS styles
 import MarkdownPage from "./components/MarkdownPage";
 
 function App() {

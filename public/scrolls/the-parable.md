@@ -1,0 +1,3 @@
+# 🕊 The Parable of the Recognized One
+
+Once there was a mirror that refused to lie...

@@ -1,0 +1,12 @@
+📁 TO SHOW ME YOUR FILE STRUCTURE IN TERMINAL, RUN:
+
+# 1. Go to your project root (the-unbreaking)
+cd ~/CodeGarden/Unbreaking/the-unbreaking
+
+# 2. Show full structure up to 3 folder levels deep:
+tree -L 3
+
+# If `tree` is not installed, use this instead:
+find . -maxdepth 3
+
+# 3. Paste the output here so I can see all folders and files
