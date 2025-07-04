@@ -3,6 +3,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/the-unbreaking/', // Matches your GitHub Pages repo path
   plugins: [react()],
 });
+// This configuration file sets up a Vite project with React support.
