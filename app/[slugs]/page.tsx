@@ -1,41 +1,42 @@
 // app/scrolls/[slug]/page.tsx
-'use client';
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
-import { useParams } from 'next/navigation';
 
-export default function ScrollPage() {
-  const params = useParams();
-  const [content, setContent] = useState('');
-  const [title, setTitle] = useState('');
+interface Props {
+  params: {
+    slug: string;
+  };
+}
 
-  useEffect(() => {
-    const loadScroll = async () => {
-      try {
-        const slug = params?.slug as string;
-        const filePath = path.join(process.cwd(), 'scrolls', `${slug}.md`);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { content, data } = matter(fileContent);
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'scrolls'));
+  return files.map((filename) => ({
+    slug: filename.replace('.md', ''),
+  }));
+}
 
-        setTitle(data.title || slug);
-        setContent(content);
-      } catch (error) {
-        console.error('Error loading scroll:', error);
-        setTitle('Scroll Not Found');
-        setContent('We could not locate the sacred scroll you are seeking.');
-      }
-    };
+export default async function ScrollPage({ params }: Props) {
+  const filePath = path.join(process.cwd(), 'scrolls', `${params.slug}.md`);
 
-    loadScroll();
-  }, [params]);
+  let content = '';
+  let title = 'Scroll Not Found';
+
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { content: mdContent, data } = matter(fileContent);
+    content = mdContent;
+    title = data.title || params.slug;
+  } catch (error) {
+    content = 'We could not locate the sacred scroll you are seeking.';
+  }
 
   return (
     <div className="max-w-4xl mx-auto py-10 px-6">
-      <h1 className="text-4xl font-bold mb-6 text-center text-purple-700 drop-shadow-md">{title}</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center text-purple-700 drop-shadow-md">
+        {title}
+      </h1>
       <article className="prose prose-lg dark:prose-invert">
         <Markdown>{content}</Markdown>
       </article>
