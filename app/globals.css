@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Selection highlight for sacred glow */
+body {
+  @apply selection:bg-purple-300 selection:text-black;
+}
+
+/* Custom dark/light mode background & text */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Apply custom colors and fonts globally */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: theme('font.sans');
+}
+
+/* Optional: Scroll glow effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: soft glow for headings */
+h1, h2, h3 {
+  @apply text-purple-300 drop-shadow-sm;
+}

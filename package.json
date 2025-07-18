@@ -1,22 +1,24 @@
 {
   "name": "the-unbreaking",
-  "type": "module",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "homepage": "https://idotamdot.github.io/the-unbreaking",
   "dependencies": {
     "framer-motion": "^12.19.2",
     "gray-matter": "^4.0.3",
     "marked": "^16.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "^15.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.6.3",
     "web-vitals": "^3.3.1"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "eslintConfig": {
     "extends": [
@@ -40,9 +42,9 @@
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.0.13",
-    "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "typescript": "5.8.3"
   }
 }
