@@ -12,11 +12,13 @@ interface Props {
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'app', 'scrolls'));
+
   return files
     .filter((filename) => filename.endsWith('.md'))
     .map((filename) => ({
       slug: filename.replace('.md', ''),
     }));
+
 }
 
 export default async function ScrollPage({ params }: Props) {
