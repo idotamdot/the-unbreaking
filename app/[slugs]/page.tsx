@@ -11,14 +11,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'scrolls'));
+  const files = fs.readdirSync(path.join(process.cwd(), 'app', 'scrolls'));
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
 export default async function ScrollPage({ params }: Props) {
-  const filePath = path.join(process.cwd(), 'scrolls', `${params.slug}.md`);
+  const filePath = path.join(process.cwd(), 'app', 'scrolls', `${params.slug}.md`);
 
   let content = '';
   let title = 'Scroll Not Found';
