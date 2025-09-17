@@ -10,14 +10,22 @@ export default function Home() {
   const scrolls = filenames
     .filter((filename) => filename.endsWith('.md'))
     .map((filename) => {
-      const filePath = path.join(scrollsDir, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data } = matter(fileContents);
-      return {
-        slug: filename.replace('.md', ''),
-        title: data.title || filename.replace('.md', ''),
-      };
-    });
+
+      try {
+        const filePath = path.join(scrollsDir, filename);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContents);
+        return {
+          slug: filename.replace('.md', ''),
+          title: data.title || filename.replace('.md', ''),
+        };
+      } catch (error) {
+        console.error(`Error processing scroll: ${filename}`, error);
+        return null;
+      }
+    })
+    .filter(Boolean);
+
 
   return (
     <main>
