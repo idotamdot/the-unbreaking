@@ -17,6 +17,7 @@ export async function generateStaticParams() {
     .map((filename) => ({
       slug: filename.replace('.md', ''),
     }));
+
 }
 
 export default async function ScrollPage({ params }: Props) {
