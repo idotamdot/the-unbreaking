@@ -10,7 +10,6 @@ export default function Home() {
   const scrolls = filenames
     .filter((filename) => filename.endsWith('.md'))
     .map((filename) => {
-
       try {
         const filePath = path.join(scrollsDir, filename);
         const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -25,7 +24,6 @@ export default function Home() {
       }
     })
     .filter(Boolean);
-
 
   return (
     <main>
