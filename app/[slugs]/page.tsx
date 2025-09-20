@@ -20,6 +20,8 @@ export async function generateStaticParams() {
 
 }
 
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
+
 export default async function ScrollPage({ params }: Props) {
   const filePath = path.join(process.cwd(), 'app', 'scrolls', `${params.slug}.md`);
 
@@ -36,13 +38,15 @@ export default async function ScrollPage({ params }: Props) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-6">
-      <h1 className="text-4xl font-bold mb-6 text-center text-purple-700 drop-shadow-md">
-        {title}
-      </h1>
-      <article className="prose prose-lg dark:prose-invert">
-        <Markdown>{content}</Markdown>
-      </article>
-    </div>
+    <ScrollAnimationWrapper>
+      <div className="max-w-4xl mx-auto py-10 px-6">
+        <h1 className="text-4xl font-bold mb-6 text-center text-purple-700 drop-shadow-md">
+          {title}
+        </h1>
+        <article className="prose prose-lg dark:prose-invert">
+          <Markdown>{content}</Markdown>
+        </article>
+      </div>
+    </ScrollAnimationWrapper>
   );
 }
