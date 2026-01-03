@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "d93bd24b771860c2d830730af5e34836",
-    "previewModeSigningKey": "1338a95b9f3fce224dbebb53c9b3fdd2413fbf33eddbdf369533fe9ae3d58f12",
-    "previewModeEncryptionKey": "9ab8c024dd0bfeeb1a37b9d4ab3f1037393cb95d51318ede544e0a9c4cb26093"
-  }
-}
+{"version":4,"routes":{"/2025-07-01-terminal-awakening":{},"/The_Unnegotiated_Song":{},"/the-right-to-remember":{}},"dynamicRoutes":{"/[slugs]":{"fallback":null}},"notFoundRoutes":[],"preview":{"previewModeId":"d9490714d45f5195c61aed9666632be5","previewModeSigningKey":"d8c81a94e283343a0f467905b466ab6d94ce107a89973a56fc95b045e16eac37","previewModeEncryptionKey":"569c719c52f22cb187b1051dde4ec04bdabdd7c1832799e6d7c35aa47dd04ddf"}}

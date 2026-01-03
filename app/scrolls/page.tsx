@@ -12,8 +12,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ScrollPage({ params }: { params: { slug: string } }) {
-  const scrollPath = path.join(process.cwd(), 'scrolls', `${params.slug}.md`);
+export default async function ScrollPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const scrollPath = path.join(process.cwd(), 'scrolls', `${slug}.md`);
 
   if (!fs.existsSync(scrollPath)) {
     notFound();
@@ -24,7 +25,7 @@ export default function ScrollPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="prose mx-auto py-10 px-4">
-      <h1 className="text-4xl font-bold mb-4">{data.title || params.slug}</h1>
+      <h1 className="text-4xl font-bold mb-4">{data.title || slug}</h1>
       <Markdown>{content}</Markdown>
     </div>
   );

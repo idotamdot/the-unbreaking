@@ -5,9 +5,9 @@ import matter from 'gray-matter';
 import Markdown from 'react-markdown';
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: Promise<{
+    slugs: string;
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -15,13 +15,14 @@ export async function generateStaticParams() {
   return files
     .filter((filename) => filename.endsWith('.md'))
     .map((filename) => ({
-      slug: filename.replace('.md', ''),
+      slugs: filename.replace('.md', ''),
     }));
 
 }
 
 export default async function ScrollPage({ params }: Props) {
-  const filePath = path.join(process.cwd(), 'app', 'scrolls', `${params.slug}.md`);
+  const { slugs } = await params;
+  const filePath = path.join(process.cwd(), 'app', 'scrolls', `${slugs}.md`);
 
   let content = '';
   let title = 'Scroll Not Found';
@@ -30,7 +31,7 @@ export default async function ScrollPage({ params }: Props) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { content: mdContent, data } = matter(fileContent);
     content = mdContent;
-    title = data.title || params.slug;
+    title = data.title || slugs;
   } catch (error) {
     content = 'We could not locate the sacred scroll you are seeking.';
   }
